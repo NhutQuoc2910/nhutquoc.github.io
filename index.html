@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Ngày 1/6 em Thư💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #4f79a4, #3d6db0);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .heart-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 18px;
+            background: #4a90e2;
+            transform: rotate(-45deg);
+            animation: heartFloat 6s infinite linear;
+            opacity: 0.6;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 20px;
+            height: 18px;
+            position: absolute;
+            left: 10px;
+            background: #4a90e2;
+            border-radius: 10px 10px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(-45deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(-45deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+            text-align: center;
+            animation: titlePulse 3s ease-in-out infinite;
+            background: linear-gradient(45deg, #4a90e2, #fff, #6bb6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: center;
+            animation: boxFloat 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes boxFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .message {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            animation: textGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 3px rgba(74, 144, 226, 0.3); }
+            50% { text-shadow: 0 0 10px rgba(74, 144, 226, 0.5); }
+        }
+
+        .interactive-button {
+            background: linear-gradient(45deg, #4a90e2, #6bb6ff);
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+            animation: buttonPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3); }
+            50% { transform: scale(1.03); box-shadow: 0 12px 25px rgba(74, 144, 226, 0.4); }
+        }
+
+        .interactive-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 30px rgba(74, 144, 226, 0.5);
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: fireworkExplode 2s ease-out forwards;
+        }
+
+        @keyframes fireworkExplode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 1.5s ease-out forwards;
+            z-index: 8;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+                box-shadow: 0 0 10px currentColor;
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 1;
+                box-shadow: 0 0 20px currentColor;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+                box-shadow: 0 0 5px currentColor;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+
+        .love-counter {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .photo-frame {
+            width: 180px;
+            height: 180px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            margin: 20px auto;
+            /* Thay đổi ở đây: Thêm ảnh nền */
+            background-image: url('emThu.jpg'); /* Đảm bảo đường dẫn đúng đến ảnh của bạn */
+            background-size: cover; /* Để ảnh lấp đầy khung mà không bị méo */
+            background-position: center; /* Để căn giữa ảnh trong khung */
+            background-repeat: no-repeat; /* Đảm bảo ảnh không lặp lại */
+            
+            display: flex; /* Giữ lại flexbox để căn giữa nếu có nội dung khác */
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem; /* Có thể xóa nếu không còn chữ trong khung ảnh */
+            animation: frameRotate 15s linear infinite;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes frameRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .music-note {
+            position: fixed;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: musicFloat 8s infinite linear;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes musicFloat {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #4a90e2;
+            animation: confettiFall 4s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .star {
+            position: fixed;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 6px solid #fff;
+            transform: rotate(35deg);
+            animation: starFloat 8s infinite linear;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .star:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 6px solid #fff;
+            transform: rotate(-70deg);
+        }
+
+        .star:after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 2px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 6px solid #fff;
+            transform: rotate(70deg);
+        }
+
+        @keyframes starFloat {
+            0% {
+                transform: translateY(100vh) rotate(35deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(395deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .shooting-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #4a90e2, 0 0 30px #4a90e2;
+            animation: shootingStar 3s linear infinite;
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .shooting-star:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(50vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            .message-box {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            .message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container" id="heartContainer"></div>
+    <div class="fireworks" id="fireworks"></div>
+    
+    <div class="container">
+        <h1 class="main-title">Chúc Mừng Ngày 1/6 Em Thư🌟</h1>
+        
+        <div class="photo-frame">
+            </div>
+        
+        <div class="message-box">
+            <p class="message">
+                Chúc mừng ngày Quốc tế Thiếu nhi! 🌟
+                <br>
+                Chúc mừng em Thư lại có thêm một ngày 1/6 có tôi!!!
+                <br><br>
+            </p>
+            
+            <button class="interactive-button" onclick="createMagic()">
+                ⭐ Capcut Giật Giật ⭐
+            </button>
+            
+            <div class="love-counter" id="loveCounter">
+                Thời gian em Thư xem: <span id="loveTime">0</span> giây! 🎉
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tạo trái tim bay
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('heartContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Tạo pháo hoa
+        function createFirework(x, y) {
+            const colors = ['#4a90e2', '#6bb6ff', '#fff', '#87ceeb', '#1e90ff', '#00bfff', '#add8e6', '#b0e0e6'];
+            const fireworksContainer = document.getElementById('fireworks');
+            
+            for (let i = 0; i < 25; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.boxShadow = `0 0 10px ${colors[Math.floor(Math.random() * colors.length)]}`;
+                
+                const angle = (Math.PI * 2 * i) / 25;
+                const velocity = Math.random() * 80 + 40;
+                const dx = Math.cos(angle) * velocity;
+                const dy = Math.sin(angle) * velocity;
+                
+                firework.style.transform = `translate(${dx}px, ${dy}px)`;
+                fireworksContainer.appendChild(firework);
+                
+                setTimeout(() => {
+                    if (firework.parentNode) {
+                        firework.remove();
+                    }
+                }, 2000);
+            }
+        }
+
+        // Tạo hiệu ứng lấp lánh
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = (x - 3) + 'px';
+            sparkle.style.top = (y - 3) + 'px';
+            sparkle.style.background = `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%)`;
+            sparkle.style.boxShadow = `0 0 15px hsl(${Math.random() * 60 + 200}, 100%, 70%)`;
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.remove();
+                }
+            }, 1500);
+        }
+
+        // Tạo ngôi sao (giữ nguyên để trang trí)
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(star);
+            
+            setTimeout(() => {
+                if (star.parentNode) {
+                    star.remove();
+                }
+            }, 12000);
+        }
+
+        // Tạo sao băng (giữ nguyên để trang trí)
+        function createShootingStar() {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.top = Math.random() * 30 + '%';
+            shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(shootingStar);
+            
+            setTimeout(() => {
+                if (shootingStar.parentNode) {
+                    shootingStar.remove();
+                }
+            }, 5000);
+        }
+
+        // Tạo nốt nhạc
+        function createMusicNote() {
+            const notes = ['♪', '♫', '♬', '♩', '♭', '♯'];
+            const note = document.createElement('div');
+            note.className = 'music-note';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.top = Math.random() * 100 + 'vh';
+            note.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            note.style.color = `hsl(${Math.random() * 60 + 300}, 70%, 70%)`;
+            document.body.appendChild(note);
+            
+            setTimeout(() => {
+                note.remove();
+            }, 10000);
+        }
+
+        // Tạo confetti
+        function createConfetti() {
+            const colors = ['#4a90e2', '#6bb6ff', '#fff', '#87ceeb', '#1e90ff', '#00bfff'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                if (confetti.parentNode) {
+                    confetti.remove();
+                }
+            }, 6000);
+        }
+
+        // Hàm tạo phép màu khi nhấn nút
+        function createMagic() {
+            // Tạo pháo hoa tại vị trí ngẫu nhiên
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 300);
+            }
+            
+            // Tạo nhiều hiệu ứng lấp lánh
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        Math.random() * window.innerWidth,
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 100);
+            }
+            
+            // Tạo confetti
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 150);
+            }
+        }
+
+        // Đếm thời gian yêu
+        let loveSeconds = 0;
+        setInterval(() => {
+            loveSeconds++;
+            document.getElementById('loveTime').textContent = loveSeconds.toLocaleString();
+        }, 1000);
+
+        // Tạo hiệu ứng liên tục
+        setInterval(createHeart, 800);
+        setInterval(createMusicNote, 2000);
+        setInterval(createConfetti, 1500);
+
+        // Tạo hiệu ứng lấp lánh khi di chuột
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.15) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        // Hiệu ứng click - luôn tạo sparkle và có 80% cơ hội tạo pháo hoa
+        document.addEventListener('click', (e) => {
+            // Luôn tạo sparkle khi click
+            createSparkle(e.clientX, e.clientY);
+            createSparkle(e.clientX + 20, e.clientY - 10);
+            createSparkle(e.clientX - 15, e.clientY + 15);
+            
+            // 80% cơ hội tạo pháo hoa
+            if (Math.random() < 0.8) {
+                setTimeout(() => {
+                    createFirework(e.clientX, e.clientY);
+                }, 200);
+            }
+            
+            // Thêm hiệu ứng rung
+            document.body.style.animation = 'none';
+            document.body.offsetHeight; // Trigger reflow
+            document.body.style.animation = 'shake 0.3s ease-in-out';
+        });
+
+        // Tự động tạo pháo hoa random
+        setInterval(() => {
+            if (Math.random() < 0.2) {
+                createFirework(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight * 0.7
+                );
+            }
+        }, 3000);
+
+        // Chúc mừng tự động khi load trang
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                createMagic();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
