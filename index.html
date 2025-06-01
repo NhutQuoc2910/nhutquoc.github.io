@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chúc Mừng Ngày 1/6 em Thư💕</title>
     <style>
+        /* CSS của bạn giữ nguyên từ phiên bản trước */
         * {
             margin: 0;
             padding: 0;
@@ -137,6 +138,22 @@
             animation: textGlow 5s ease-in-out infinite;
         }
 
+        /* Thêm hiệu ứng con trỏ nhấp nháy cho hiệu ứng đánh chữ */
+        .typing-text::after {
+            content: '|'; /* Con trỏ nhấp nháy */
+            animation: blink-caret 0.75s step-end infinite;
+            display: inline-block; /* Đảm bảo con trỏ hiển thị đúng */
+            width: 0; /* Mặc định ẩn con trỏ */
+        }
+        .typing-text.finished::after {
+            width: 1ch; /* Hiển thị con trỏ khi hoàn thành */
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent }
+            50% { border-right-color: #333; } /* Màu của con trỏ */
+        }
+
         @keyframes textGlow {
             0%, 100% { text-shadow: 0 0 3px rgba(74, 144, 226, 0.3); }
             50% { text-shadow: 0 0 10px rgba(74, 144, 226, 0.5); }
@@ -247,16 +264,15 @@
             border: 4px solid #fff;
             border-radius: 50%;
             margin: 20px auto;
-            /* Thay đổi ở đây: Thêm ảnh nền */
             background-image: url('emThu.jpg'); /* Đảm bảo đường dẫn đúng đến ảnh của bạn */
-            background-size: cover; /* Để ảnh lấp đầy khung mà không bị méo */
-            background-position: center; /* Để căn giữa ảnh trong khung */
-            background-repeat: no-repeat; /* Đảm bảo ảnh không lặp lại */
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
             
-            display: flex; /* Giữ lại flexbox để căn giữa nếu có nội dung khác */
+            display: flex; 
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem; /* Có thể xóa nếu không còn chữ trong khung ảnh */
+            font-size: 3.5rem; 
             animation: frameRotate 15s linear infinite;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
@@ -426,6 +442,11 @@
     <div class="heart-container" id="heartContainer"></div>
     <div class="fireworks" id="fireworks"></div>
     
+    <audio controls autoplay loop>
+  <source src="Everything-TheBlackSkirts.mp3" type="audio/mpeg">
+</audio>
+
+
     <div class="container">
         <h1 class="main-title">Chúc Mừng Ngày 1/6 Em Thư🌟</h1>
         
@@ -434,10 +455,7 @@
         
         <div class="message-box">
             <p class="message">
-                Chúc mừng ngày Quốc tế Thiếu nhi! 🌟
-                <br>
-                Chúc mừng em Thư lại có thêm một ngày 1/6 có tôi!!!
-                <br><br>
+                <span id="typing-text"></span> <br><br>
             </p>
             
             <button class="interactive-button" onclick="createMagic()">
@@ -451,6 +469,40 @@
     </div>
 
     <script>
+        // Hiệu ứng đánh chữ
+        const textToType = `Chúc mừng ngày Quốc tế Thiếu nhi! 🌟
+Chúc mừng em Thư lại có thêm một ngày 1/6 có tôi!!!`;
+        const typingElement = document.getElementById('typing-text');
+        let charIndex = 0;
+        const typingSpeed = 70; // Thời gian giữa mỗi ký tự (milliseconds)
+        const delayBeforeStart = 1000; // Thời gian chờ trước khi bắt đầu đánh chữ (milliseconds)
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                // Kiểm tra ký tự xuống dòng
+                if (textToType.charAt(charIndex) === '\n') {
+                    typingElement.innerHTML += '<br>';
+                } else {
+                    typingElement.textContent += textToType.charAt(charIndex);
+                }
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                // Khi hoàn thành, thêm class để con trỏ nhấp nháy liên tục
+                typingElement.classList.add('finished');
+            }
+        }
+
+        // Bắt đầu hiệu ứng đánh chữ sau một khoảng thời gian
+        document.addEventListener('DOMContentLoaded', () => {
+             // Đảm bảo tạo hiệu ứng đánh chữ sau khi các hiệu ứng load trang khác chạy
+            setTimeout(() => {
+                typeWriter();
+            }, delayBeforeStart);
+        });
+
+
+        // Các hàm JavaScript khác của bạn giữ nguyên từ phiên bản trước
         // Tạo trái tim bay
         function createHeart() {
             const heart = document.createElement('div');
@@ -639,13 +691,11 @@
                 }, 200);
             }
             
-            // Thêm hiệu ứng rung
             document.body.style.animation = 'none';
-            document.body.offsetHeight; // Trigger reflow
+            document.body.offsetHeight;
             document.body.style.animation = 'shake 0.3s ease-in-out';
         });
 
-        // Tự động tạo pháo hoa random
         setInterval(() => {
             if (Math.random() < 0.2) {
                 createFirework(
@@ -655,11 +705,10 @@
             }
         }, 3000);
 
-        // Chúc mừng tự động khi load trang
         window.addEventListener('load', () => {
             setTimeout(() => {
                 createMagic();
-            }, 1000);
+            }, delayBeforeStart + textToType.length * typingSpeed + 500); // Chờ hiệu ứng đánh chữ kết thúc và thêm 0.5s
         });
     </script>
 </body>
